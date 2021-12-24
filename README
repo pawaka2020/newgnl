@@ -21,7 +21,7 @@ So basically we have a loop within a loop. Both loops have the same conditions: 
 
 ---
 
-Only two utility functions are needed. Ft_strlen isn't even necessary. The same code can een be copied and reused for the bonus part perfectly. No static variables are necessary AT ALL.
+Only two utility functions are needed. ft_strlen isn't even necessary. The same code can even be copied and reused for the bonus part perfectly. No static variables are necessary at all.
 
 This function is actually IMO more efficient than the conventional way as well, because the program does not need to set up a huge array if the number of characters in a file is actually very small. 
 Imagine if you put BUFFER_SIZE=90000 but you only have 'abcde' in a file. 
