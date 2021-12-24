@@ -36,7 +36,7 @@ char *ft_append(char *str, char c, int *len)
 //all variables must have a declared value before use
 char *ft_getline(int fd, int size)
 {
-	int i;;
+	int i;
 	int readres;
 	char *line;
 	char c;
