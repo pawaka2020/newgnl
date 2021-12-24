@@ -1,0 +1,38 @@
+SIMPLER GNL by Rinor Ramli
+--
+
+This is a potentially new way to code for
+the get_next_line project in the 42 Cursus.
+
+The project requires that we include the use of BUFFER_SIZE. This necessitates the inclusion of
+static strings, because setting a buffer size for the read() function will end up making get_next_line 'overshoot' beyond a text file's number of characters in a given line, thus making it neccessary to also code for additional functions to trim the overshot return values and preserve the remaining ones for the next iteration of get_next_line. 
+
+This leads to long and complicated code that is difficult to test, and more importantly, difficult to understand and memorize for exam02. 
+
+---
+
+This my idea for this potential alternative solution is : Just because you are required to use BUFFER_SIZE doesn't mean you have to use *all* of it at a given time. 
+
+Instead of get_next_line reading from a file BUFFER_SIZE bytes at a time, it would only read one byte at a time until BUFFER_SIZE bytes have been read, or \n is found, or when it reaches the end of the file. 
+
+If for instance BUFFER_SIZE is set to 4, then get_next_line reads 4 bytes at a time, but stopping if \n or EOF. And then if after 4 bytes are reached there is more to read, it will keep repeating the process until \n or EOF. 
+
+So basically we have a loop within a loop. Both loops have the same conditions: repeat until either read() == 1 or the char returned from read() == \n.
+
+---
+
+Only two utility functions are needed. Ft_strlen isn't even necessary. The same code can een be copied and reused for the bonus part perfectly. No static variables are necessary AT ALL.
+
+This function is actually IMO more efficient than the conventional way as well, because the program does not need to set up a huge array if the number of characters in a file is actually very small. 
+Imagine if you put BUFFER_SIZE=90000 but you only have 'abcde' in a file. 
+
+It doesn't matter with my method because regardless of BUFFER_SIZE values my get_next_line still reads the file one character at a time, and stops the moment EOF or \n is found. 
+
+---
+
+Disclaimer: I only tested this with https://github.com/Tripouille/gnlTester. I have not submitted this project to moulinette for actual grading. 
+
+I invite you all to review this code. Don't straight out copy. Try to learn from my insight and improve with some of your own. Thanks. 
+
+Rinor Ramli / riramli
+Student of 42KL. 
